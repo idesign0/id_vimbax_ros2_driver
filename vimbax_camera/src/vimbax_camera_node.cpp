@@ -26,7 +26,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#ifdef __unix__
+#if defined(__unix__) || defined(__APPLE__)
 #include <unistd.h>
 #endif
 
@@ -1671,7 +1671,7 @@ bool VimbaXCameraNode::is_streaming()
 std::string VimbaXCameraNode::get_node_name()
 {
   auto const pidString = [] {
-#ifdef __unix__
+#if defined(__unix__) || defined(__APPLE__)
       return std::to_string(getpid());
 #endif
     }();
